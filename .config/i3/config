@@ -189,3 +189,4 @@ exec --no-startup-id xrandr --output DP-2 --rate 144 --mode 2560x1440
 exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id picom -b
 exec --no-startup-id nitrogen --restore &
+exec --no-startup-id ~/.config/polybar/launch.sh
