@@ -458,7 +458,7 @@ def _getDuration(t: int):
 
 def _metadataGetFirstItem(_value):
     if type(_value) is list:
-        # Returns the string representation of the first item on _value if it has at least one item.
+        # Returns the stringpythonrepresentation of the first item on _value if it has at least one item.
         # Returns an empty string if _value is empty.
         return str(_value[0]) if len(_value) else ''
     else:
