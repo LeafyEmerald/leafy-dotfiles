@@ -55,7 +55,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = i3
-modules-center = musicctl
+modules-center = player-mpris-tail
 modules-right = pulseaudio date powermenu
 
 tray-position = right
@@ -184,6 +184,11 @@ label-song-ellipsis = true
 
 [module/player-mpris-tail]
 type = custom/script
+exec = ~/.config/polybar/player-mpris-tail.py -f '{icon} {:artist:t5:{artist}:}{:artist: - :}{:t4:{title}:}'
+tail = true
+click-left = ~/.config/polybar/mplayer_launch.sh
+click-right = ~/polybar-scripts/player-mpris-tail.py next &
+click-middle = ~/polybar-scripts/player-mpris-tail.py play-pause &
 
 
 [module/xbacklight]
