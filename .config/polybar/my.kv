@@ -1,0 +1,94 @@
+#:kivy 1.0
+#:import playerctl player_ctl_script
+#:set font 'Overpass Regular Nerd Font Complete.otf'
+#:set b_font 'Overpass Bold Nerd Font Complete.otf'
+#:set buttonsize 35
+#:set altfont 'Overpass Bold Nerd Font Complete.otf'
+
+<Button>:
+    background_normal: ''
+    background_color: .12, .06, 0, .87
+
+<MainContainer>:
+    canvas.before:
+        Color:
+            rgba: .12, .06, 0, .87
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    #BoxLayout:
+        #orientation: 'horizontal'
+        #BoxLayout:
+        #    orientation: 'horizontal'
+
+            #img:img
+            #AsyncImage:
+            #    id: img
+            #    source: 'url_here'
+
+    GridLayout:
+        padding: 70, 10
+        spacing: 50, 0
+        rows: 3
+        cols: 1
+
+        #orientation: 'vertical'
+        Label:
+            padding: 0, 50
+            id: np
+            text: ''
+            font_name: font
+            font_size: 16
+            bold: True
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                id: title
+                text: 'foo bar'
+                font_name: b_font
+                font_size: 20
+                #bold: True
+                padding: 0, 50
+
+            Label:
+                padding: 0, 20
+                id: artist
+                font_size: 16
+                font_name: font
+
+
+        BoxLayout:
+            size_hint: 1.5,1.5 
+            orientation:'horizontal'
+            padding: 0, 7
+            height: 100
+            Button:
+                size: 1, 1
+                id: rw
+                text: ''
+                font_name: font
+                halign: 'right'
+                font_size: buttonsize
+                text_size: self.size
+                on_release: playerctl.prevSong(self)
+                
+            Button:
+                id: pl
+                text:''
+                font_name: font
+                font_size: buttonsize
+                text_size: self.size
+                halign: 'center'
+                on_release:root.playingFunc(self)
+                
+                
+            Button:
+                id: ff
+                text:''   
+                font_name: font
+                font_size: buttonsize
+                halign: 'left'
+                text_size: self.size
+                on_release: playerctl.nextSong(self)
+                
+            
