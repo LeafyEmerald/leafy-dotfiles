@@ -2,38 +2,50 @@
 
 # import the needed stuff
 
+from os import WIFCONTINUED
 import kivy
 
+
+from kivy.config import Config
+
+# Window config
+# we want it centered, my screen res is 2560x1440
+
+vert_height = 150
+horiz_height= 350
+
+window_left_pos = int(2560/2-(horiz_height/2))
+
+# my polybar height (for now is 27 px)
+
+window_top = int(1440)
+
+# Hides title bar for configs where titlebar is enabled
+Config.set('graphics', 'fullscreen', 'fake')
+
+
+# Disables resizing
+Config.set('graphics', 'resizable', False)
+Config.set('graphics', 'position', 'custom')
+Config.set('graphics', 'left', window_left_pos)
+Config.set('graphics', 'top',  50)
+
+#sets window size
+
+Config.set('graphics', 'width', str(horiz_height))
+Config.set('graphics', 'height', str(vert_height))
+
+#Window.size = (window_vert_size, window_horiz_size)
+
 from kivy.app import App
+from kivy.core import window
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
-from kivy.config import Config
 from kivy.core.window import Window
 from kivy.clock import Clock
 
 import player_ctl_script
 
-# Hides title bar for configs where titlebar is enabled
-Config.set('graphics', 'fullscreen', 'fake')
-
-# Disables resizing
-Config.set('graphics', 'resizable', False)
-Config.set('graphics','position','custom')
-#Config.set('graphics','left',500)
-#Config.set('graphics','top',10)
-
-window_vert_size = 350
-window_horiz_size = 150
-
-# Window config
-Window.size = (window_vert_size, window_horiz_size)
-
-# we want it centered, my screen res is 2560x1440
-
-Window.left = 2560/2-(window_vert_size/2)
-
-# my polybar height (for now is 27 px)
-Window.top = 31
 
 
 class MouseLeavesWindow(Label):

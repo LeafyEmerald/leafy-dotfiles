@@ -28,11 +28,13 @@ alert = #bd2c40
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 32
-;offset-x = 1%
-;offset-y = 5
-radius = 0
+height = 37
+offset-x = 0%
+offset-y = 0
+radius = 10
 fixed-center = true
+
+;override-redirect = true
 
 background = ${xrdb:background}
 foreground = ${colors.foreground}
@@ -40,26 +42,30 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 0
+border-top-size = 10
+border-size = 16
+border-bottom-size = 0
 border-color = #00000000
 
 padding-left = 2
 padding-right = 2
 
 margin-top = 5
+;module-radius = 10
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = Jetbrains Mono:style=Regular
+font-0 = Overpass Nerd Font:style=Regular
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
+font-3 = Overpass Nerd Font:style=Regular:size=12
 
 modules-left = i3
 modules-center = player-mpris-tail
 modules-right = pulseaudio date powermenu
 
-tray-position = right
-tray-padding = 2
+;tray-position = right
+;tray-padding = 2
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
@@ -143,23 +149,23 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %{T4}%{T4}
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+;label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused =%{T4}%{T4}
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible =%{T4}%{T4} 
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent =%{T4}%{T4} 
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -279,7 +285,7 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+;format-underline = #0a6cf5
 
 label = %date% %time%
 
@@ -322,6 +328,7 @@ format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
 bar-volume-width = 10
+bar-volume-height = 10
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55
@@ -337,39 +344,6 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = ADP1
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
@@ -392,13 +366,14 @@ ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
 type = custom/menu
-
 expand-right = true
 
 format-spacing = 1
 
-label-open = P
-label-open-foreground = ${colors.secondary}
+label-open = %{T4}⏻%{T4}
+;label-open-border = 4px
+;label-open-background = #ff0000
+label-open-foreground = ${colors.foreground}
 label-close = P cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |

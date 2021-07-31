@@ -176,13 +176,13 @@ bindsym $mod+r mode "resize"
 
 # Customisations for I3
 # KEYBINDS
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 
 # GAPS
 for_window [class=".*"] border pixel 0
 gaps inner 20
-smart_gaps on
+# smart_gaps on
 
 #make custom player implementation floating
 for_window [class="python3.9"] floating enable
